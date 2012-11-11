@@ -32,15 +32,173 @@ body:before {
     margin-top:-32767px;
 }
 
-/** *  FOOTER STYLES  * */
+/**  FOOTER STYLES  
 #footer {
 
     height:69px;
-    /** CSSS HACK FOR STICKY FOOTER **/
     position: relative; 
     width: 100%;
    
     clear: both;
 
 }
+**/
 
+#wrapper {
+	position: relative; 
+	width: 1028px; 
+	margin: 0 auto; 
+	padding: 0;
+	display: block; 
+	height: auto; 
+}
+
+#float-wrap { position: relative; }
+
+.sidebar-div {
+	position: relative; 
+	float: left; 
+	width: 203px;
+	height: auto;
+	height: 100%;
+	
+	font-size: 15px;
+	line-height: 1.7em;
+	color: #525252;
+	
+}
+	.sidebar-menu-div .sidebar-count{
+		color: #fff;
+		
+		position: absolute;
+		right: 8px;
+		top: 5px; 
+		font-size: 16px;
+		font-family: 'oswald', 'arial';
+	}
+	.sidebar-div .sidebar-top { position:relative; }	
+	.sidebar-div .sidebar-content-div{
+		position: relative;
+		display: block;
+		background: url('../images/sidebar-bg.jpg') #fff;
+	}
+	
+	.sidebar-div .sidebar-content-div .sidebar-content {
+		position: relative; 
+		margin-left: 26px; 
+		padding: 0;
+		padding-bottom: 50px;
+	}
+	.sidebar-div .title { font-size: 1.2em;}
+	
+	.sidebar-div .sidebar-main-menu-list {
+		list-style: none; 
+		padding: 0;
+		margin: 0; 
+		margin-top: 20px;
+		
+	}
+	
+	.sidebar-main-menu-list > li{
+		padding: 0;
+		margin: 0; 
+		margin-bottom: 10px;
+		border-top: 1px solid #adaeae;
+		border-bottom: 1px solid #adaeae;
+		background: url('../images/sidebar-menu-gray.jpg') repeat-y top right;
+	}
+	
+	.sidebar-main-menu-list li.current {
+		border-top: 1px solid #e78c97;
+		border-bottom: 1px solid #e78c97;
+		background: url('../images/sidebar-menu-red.jpg') repeat-y top right;
+	}
+		
+		.sidebar-main-menu-list li .sidebar-menu-div {
+			position: relative;
+			padding: 8px 34px 8px 8px;						
+		}
+		
+			.sidebar-menu-div .title { font-size: 17px; font-transform: uppercase;}
+	
+	.sidebar-menu-div .sidebar-menu-list {
+		border: none;
+		list-style: none; 
+		padding: 0 0 0 20px;
+		margin: 10px 0;
+	}
+		.sidebar-menu-div .sidebar-menu-list li,
+		.sidebar-menu-div .sidebar-menu-list li a,
+		.sidebar-menu-div .sidebar-menu-list li a:link,
+		.sidebar-menu-div .sidebar-menu-list li a:visited		
+		{
+			border: none;
+			font-family: 'ptsans', 'verdana', 'arial';
+			color: #525252;
+			background: none; 
+			text-decoration: none;
+		}
+		.sidebar-menu-div .sidebar-menu-list li a:hover,
+		.sidebar-menu-div .sidebar-menu-list li a:active {
+			text-decoration: underline;
+		}
+		.sidebar-menu-div .sidebar-menu-list li.current a{
+			font-weight: bold;
+		}
+	
+.header-content-div {
+	position: relative;
+	float: right; 
+	width: 782px; 
+	height: auto;
+		
+}
+	.header-content-div .header { position: relative; height: 55px; margin: 15px 0 15px 0; }	
+	
+	.header .header-logo {
+		float: left; 
+	}
+		.header .header-menu-list{
+			list-style: none; 
+			position: relative;
+			padding: 0;
+			margin: 0;
+			width: 418px;
+			height: 55px; 
+			float: right;
+			
+		}
+		
+		.header .header-menu-list li { 
+			float: right; 
+			padding: 0;
+			margin: 0;
+			height: auto;
+			background: #f3f4f4;
+			color: #b2b3b3;
+			font-family: 'oswald', 'verdana','arial';
+			text-transform: uppercase;
+			font-size: 14px;
+			text-align: center;
+			border-bottom: 4px solid #f3f4f4;
+			margin-right: 2px;
+			cursor: pointer;
+		}
+		
+		.header .header-menu-list li.current,
+		.header .header-menu-list li:hover {
+			background: #e6001d;
+			color: #fff;
+			border-bottom: 4px solid #e6001d;
+		
+		}
+		
+		.header .header-menu-list li div { 
+			position: relative;
+			display: block;			
+			padding-top: 12px;
+			width: 135px;
+			height: 36px; 
+			border-bottom: 4px solid #fff;
+		}
+	

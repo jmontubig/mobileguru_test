@@ -83,7 +83,7 @@ margin:0;
 .nopadding {
 padding:0;
 }
-
+.breather { padding: 8px; }
 .vert-breather {
 padding-top:5px;
 padding-bottom:5px;
@@ -158,12 +158,10 @@ bottom:5px;
 vertical-align:baseline;
 }
 
-.clearfix:after {
-content:".";
-visibility:hidden;
-display:block;
-height:0;
-clear:both;
+.clearfix {
+	border: 1px solid transparent;
+	overflow: hidden;
+	width: 100%;
 }
 
 .valign-top {
@@ -288,3 +286,9 @@ vertical-align:middle;
 .v-align-bottom,.valign-bottom {
 vertical-align:bottom;
 }
+
+/** FONTS **/
+.oswald { font-family: 'oswald', 'verdana', 'arial'; }
+.ptsans { font-family: 'ptsans', 'verdana', 'arial'; }
+.metrophobic { font-family: 'metrophobic', 'verdana', 'arial'; }
+.rbno2 { font-family: 'rbno2', 'verdana', 'arial'; }
