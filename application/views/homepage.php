@@ -24,8 +24,7 @@ echo doctype('html4-trans');
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />       			
 				
-        <link href="<?php echo site_url('/css/custom-theme/jquery-ui-1.8.21.custom.css'); ?>" rel="stylesheet" type="text/css" />        
-        <link href="<?php echo site_url('/css/datetimepicker.css'); ?>" rel="stylesheet" type="text/css" />
+			
 		<link href="<?php echo site_url('/css/styles.css'); ?>" rel="stylesheet" type="text/css" />
         
 		<!--[if IE]>               
@@ -36,11 +35,14 @@ echo doctype('html4-trans');
 			<link href="<?php echo site_url('/css/ie6-and-down.css'); ?>" rel="stylesheet" type="text/css" />
         <![endif]-->
                        
-        <script src="<?php echo site_url('/js/jquery-1.6.2.min.js'); ?>" type="text/javascript"></script>
+        <script src="<?php echo site_url('/js/jquery-1.8.1.min.js'); ?>" type="text/javascript"></script>
         <script src="<?php echo site_url('/js/jquery-ui-1.8.21.custom.min.js'); ?>" type="text/javascript"></script>
+		<script src="<?php echo site_url('/js/jquery.mousewheel.min.js'); ?>" type="text/javascript"></script>     
         <script src="<?php echo site_url('/js/jquery.fileUploader.js'); ?>" type="text/javascript"></script>
         <script src="<?php echo site_url('/js/jquery.validate.min.js'); ?>" type="text/javascript"></script>
         <script src="<?php echo site_url('/js/jquery-ui-timepicker-addon.js'); ?>" type="text/javascript"></script>     
+		<script src="<?php echo site_url('/js/jquery.tools.min.js'); ?>" type="text/javascript"></script>
+		
 
         <script src="<?php echo site_url('/js/custom.js'); ?>" type="text/javascript"></script> 
 		
@@ -67,7 +69,7 @@ echo doctype('html4-trans');
 							<div class="ptsans">(212) 346-9662</div>
 						</div>
 						
-						<a href="#" target="blank">
+						<a href="https://maps.google.com/maps?q=275+Greenwich+St,+New+York,+NY+10007,+United+States&hl=en&sll=37.09024,-95.712891&sspn=34.808514,86.572266&oq=275+Greenwich+St++New+York,+NY+10007&hnear=275+Greenwich+St,+New+York,+10007&t=m&z=16" target="blank">
 							<?php echo img('/images/sidebar-map.jpg'); ?>
 						</a>
 						
@@ -130,17 +132,29 @@ echo doctype('html4-trans');
 					</ul>
 				</div>
 				<div id="content">
-					<div class="top-images">
-						<div class="top-img">
-							<div class="left-panel">
-								<div class="large-text1">The Samsung Galaxy has arrived.</div>
-								<div class="large-text2">Designed for Humans <br/> Inspired by Nature</div>
-								<div class="learn-more"><?php echo anchor('/','Learn More'); ?></div>
+					<?php $this->load->view('home-banner'); ?>
+					<div class="content-lower-float-holder clearfix">
+						<div class="floatLeft">
+							<?php $this->load->view('home-carousel'); ?>
+							<div class="clearfix">
+								<div class="floatLeft"><?php echo img('/images/right-plan.jpg'); ?></div>
+								<div class="floatRight"><?php echo img('/images/accessories.jpg'); ?></div>
 							</div>
-							<?php echo img('/images/banner-1.jpg', 'width="782"'); ?>
 						</div>
+						
+						<div class="floatRight">
+							<?php echo img('/images/bussiness.jpg', 'width="259" height="397"'); ?>
+						</div>
+						
+						
 					</div>
+					<br/><br/><br/><br/>
+					
+				
 				</div>
+				
+				
+				
 			</div>
 		</div>
 	</div>

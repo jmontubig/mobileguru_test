@@ -160,7 +160,7 @@ vertical-align:baseline;
 
 .clearfix {
 	border: 1px solid transparent;
-	overflow: hidden;
+	overflow: visible;
 	width: 100%;
 }
 
