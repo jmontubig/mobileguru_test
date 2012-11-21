@@ -661,6 +661,13 @@ class Jm {
         }
        
     }
+	
+	function alphanumericOnly($string, $tolower=false){
+		$string = preg_replace("/[^a-zA-Z ]/m", "-", $string);
+		$string = preg_replace("/ /", "-", $string);
+		
+		return ($tolower ? $string : strtolower($string));
+	}
     /**
      *  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
      *               PLUGIN RELATED FUNCTIONS
@@ -1127,6 +1134,10 @@ function ie(&$data, $pamalit=''){
     }
     
 }
+
+/** Function to check if a data has been set and not empty. **/
+function issetNotEmpty(&$data) { return isset($data) && (!empty($data)); }
+
 function ei(&$data, $pamalit=''){
     if(isset($data) ){
         if( (empty($data)) || ($data == '') || ($data == ' ')) {return $pamalit; }

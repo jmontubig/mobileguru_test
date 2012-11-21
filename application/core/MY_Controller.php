@@ -57,10 +57,13 @@ class MY_Controller extends CI_Controller {
     /**
      * These shouldn't be accessible from outside the controller
     **/
-    protected function before() { return;  }
+    protected function before() { 
+		$this->load->view('header');
+		return;  
+	}
     protected function message() { if($this->jm->is_user_admin()) { $this->load->view('message');return; } }
     protected function after() { 
-		
+		$this->load->view('footer');
 		return; 
 	}
 	

@@ -44,6 +44,15 @@ body:before {
 	height: auto; 
 }
 
+
+.img-hover { position: relative; }
+.img-hover .hover, .img-hover .unhover  {
+	position: absolute; top: 0; left: 0; z-index: 1; cursor: pointer;	
+}
+.img-hover .hover{ display: none; z-index: 10;  }
+.img-hover .unhover { display: block; z-index: 7; }
+
+
 #float-wrap { position: relative; }
 
 .sidebar-div {
@@ -56,6 +65,7 @@ body:before {
 	font-size: 15px;
 	line-height: 1.7em;
 	color: #525252;
+	cursor: pointer;
 	
 	background: url('../images/sidebar-bg.jpg') #fff;
 	
@@ -88,8 +98,7 @@ body:before {
 		list-style: none; 
 		padding: 0;
 		margin: 0; 
-		margin-top: 20px;
-		
+		margin-top: 20px;		
 	}
 	
 	.sidebar-main-menu-list > li{
@@ -292,7 +301,7 @@ body:before {
 			position: absolute;
 			background: #e6001d; 
 			height: 3px; 
-			width: 116px; 
+			width: 0px;/*782px*/ 
 		}
 
 	.banner-tab-list { list-style: none; padding: 0; margin: 0; height: 78px;}
@@ -373,7 +382,8 @@ body:before {
 	width: 518px;
 	height: 195px;
 }
-	
+	.carousel { width: 518px; height: 198px;}
+	.carousel .unhover img { width: 520px; }
 	.phone-carousel-holder .next,
 	.phone-carousel-holder .prev
 	{
@@ -431,3 +441,90 @@ body:before {
 	.items div .image {
 		margin-top: 0;
 	}
+
+.phone-cat-list {
+	position: relative; 
+	margin: 0;
+	padding: 0; 
+	color: #858585;
+	border-bottom: 1px solid #f599a5;
+	height: 55px;
+}
+
+	.phone-cat-list li {
+		position: relative; 
+		margin: 0; 
+		float: left; 		
+		padding: 15px 30px; 
+		margin-right: 2px;
+	}
+		.phone-cat-list li a,
+		.phone-cat-list li a:link,
+		.phone-cat-list li a:visited 
+		{
+			display: block;			
+			font-size: 18px;
+			text-transform: uppercase; 
+			color: #858585;
+			text-decoration: none; 
+			font-family: 'oswald', 'verdana', 'arial';
+			
+			
+		}
+		
+	.phone-cat-list li:hover, 
+	.phone-cat-list li.current,
+	.phone-cat-list li.current:hover
+	{ background: #e6001d; }
+	
+	.phone-cat-list li:hover a,
+	.phone-cat-list li:hover a:visited,
+	
+	.phone-cat-list li.current a,		.phone-cat-list li.current:hover a:visited,
+	.phone-cat-list li.current:hover a
+	{ color: #fff; }
+
+.phone-brand-list {
+	position: relative; 
+	margin: 0;
+	padding: 0; 
+	color: #858585;	
+	height: 55px;
+}
+
+	.phone-brand-list li {
+		position: relative; 
+		margin: 0; 
+		float: left; 		
+		padding: 12px 18px; 
+		margin-right: 2px;
+	}
+	
+	.phone-brand-list li a,
+	.phone-brand-list li a:link,
+	.phone-brand-list li a:visited
+	
+
+	
+	{
+		display: block;			
+		font-size: 19px;
+		text-transform: uppercase; 
+		color: #858585;
+		text-decoration: none; 
+		font-family: 'rbno2', 'verdana', 'arial';
+	}
+	
+	.phone-brand-list li:hover a,
+	.phone-brand-list li:hover a:visited,
+	
+	.phone-brand-list li.selected a,
+	.phone-brand-list li.selected a:link,
+	.phone-brand-list li.selected a:visited,
+	
+	.phone-brand-list li.selected a,	
+	.phone-brand-list li.selected:hover a:visited,
+	.phone-brand-list li.selected:hover a,
+	
+	.phone-brand-list li a.selected
+	{ color: #e6001d; }

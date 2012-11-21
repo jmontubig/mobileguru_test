@@ -49,8 +49,36 @@ $(document).ready(function() {
 		$('.top-images').find('.active').fadeIn(300);
    });
    
+   $('.img-hover').hover(function() {
+		$(this).find('.unhover').hide();
+		$(this).find('.hover').fadeIn(300);
+   }, function() {
+		$(this).find('.unhover').fadeIn(300);
+		$(this).find('.hover').hide();
+   });
+   
    
    $(".phones").scrollable({ circular: true, mousewheel: true });
+   setIndicator(null, null);
+   
+   //MAIN MENU SUB MENU ANIMATION//
+   $('.sidebar-main-menu-list li').find('.sidebar-menu-list').hide(); 
+   $('.sidebar-main-menu-list li.current').find('.sidebar-menu-list').show();  
+   
+   $('.sidebar-main-menu-list li').click(function(e) {		
+		if($(this).find('ul.sidebar-menu-list').length > 0) {
+			//if($(this) == e.target){
+				if($(this).find('ul.sidebar-menu-list').css('display') == 'none') {
+					console.log('test');
+					$(this).find('ul.sidebar-menu-list').show(200);
+				} else {
+					$(this).find('ul.sidebar-menu-list').hide(200);
+				}
+			//}
+		}
+
+   });
+   
    
 });
 
@@ -150,6 +178,7 @@ function previous() {
 
 function setIndicator(index, action){
 	indicator = $('.indicator-div .indicator');
+	/*
 	var param = { left: "+=195px" };
 	var param_start = { left: "0px" };
 	
@@ -175,6 +204,18 @@ function setIndicator(index, action){
 		}
 		
 	}
+	*/
+
+	//setTimeout(function() {
+	//if(isHover != 1) {
+		indicator.css('width', '0px');
+		indicator.animate({
+				width : '782px'
+		}, 2800, function() {
+			
+		}); 
+	//}
+	//}, 3000);
 }
 
 $(function() {
