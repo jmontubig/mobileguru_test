@@ -41,6 +41,7 @@
 $route['default_controller'] = "homepage";
 $route['404_override'] = '';
 $route['devices/(:any)'] = "devices/index/$1";
+$route['accessories/(:any)'] = "accessories/index/$1";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

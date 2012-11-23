@@ -442,7 +442,9 @@ body:before {
 		margin-top: 0;
 	}
 
-.phone-cat-list {
+.phone-cat-list,
+.tab-main-menu-list
+{
 	position: relative; 
 	margin: 0;
 	padding: 0; 
@@ -451,16 +453,25 @@ body:before {
 	height: 55px;
 }
 
-	.phone-cat-list li {
+	.phone-cat-list li,
+	.tab-main-menu-list li
+	{
 		position: relative; 
 		margin: 0; 
 		float: left; 		
 		padding: 15px 30px; 
 		margin-right: 2px;
 	}
+	
+	
+	
 		.phone-cat-list li a,
 		.phone-cat-list li a:link,
-		.phone-cat-list li a:visited 
+		.phone-cat-list li a:visited,
+		
+		.tab-main-menu-list li a,
+		.tab-main-menu-list li a:link,
+		.tab-main-menu-list li a:visited		
 		{
 			display: block;			
 			font-size: 18px;
@@ -474,15 +485,33 @@ body:before {
 		
 	.phone-cat-list li:hover, 
 	.phone-cat-list li.current,
-	.phone-cat-list li.current:hover
+	.phone-cat-list li.current:hover,
+	
+	.tab-main-menu-list li:hover, 
+	.tab-main-menu-list li.current,
+	.tab-main-menu-list li.current:hover
 	{ background: #e6001d; }
 	
 	.phone-cat-list li:hover a,
 	.phone-cat-list li:hover a:visited,
 	
 	.phone-cat-list li.current a,		.phone-cat-list li.current:hover a:visited,
-	.phone-cat-list li.current:hover a
+	.phone-cat-list li.current:hover a,
+	
+	.tab-main-menu-list li:hover a,
+	.tab-main-menu-list li:hover a:visited,
+	
+	.tab-main-menu-list li.current a,	
+	.tab-main-menu-list li.current:hover a:visited,
+	.tab-main-menu-list li.current:hover a
 	{ color: #fff; }
+	
+	.acc-menu-list li { padding: 15px 20px; } /** OVERRIDES **/
+	.acc-menu-list li a,
+	.acc-menu-list li a:link,
+	.acc-menu-list li a:visited {
+		font-size: 17px;
+	}	
 
 .phone-brand-list {
 	position: relative; 
@@ -528,3 +557,25 @@ body:before {
 	
 	.phone-brand-list li a.selected
 	{ color: #e6001d; }
+	
+.acc-content {
+	position: relative; 
+	width: 100%;
+	height: auto; 
+	margin: 0;
+	padding: 20px 0;
+}
+
+	.acc-thumb-list { position: relative; margin: 0; padding: 0; list-style: none; }
+		.acc-thumb-list li { 
+			width: 378px; 
+			height: 296px; 
+			padding: 0; 
+			margin: 0 0 20px 0;
+			float: left; 
+			overflow: none; 
+		}
+		
+		.acc-thumb-list li.first { margin-right: 20px;}
+	
+			.acc-thumb-list li img { width: 378px; border: 1px solid #bbb;}

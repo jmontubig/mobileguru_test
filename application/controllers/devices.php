@@ -264,6 +264,7 @@ class Devices extends MY_Controller {
 			
 		);
 		
+		$this->session->set_userdata('current_page', 'devices');
 		
 		//set data to view
 		$this->data['cat'] = $cat;
