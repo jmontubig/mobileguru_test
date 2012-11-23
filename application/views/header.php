@@ -48,7 +48,10 @@ echo doctype('html4-trans');
 		
 
 </head>  
-
+<?php 
+	$page = $this->uri->rsegment(3); 
+	 if( ($page != 'faq') && ($page != 'business') ) { $page = 'home';}
+?>
 <body class="<?php echo $this->uri->segment(1).' '.$this->uri->segment(1).'-'.$this->uri->segment(2); ?>">  
 	<div id="wrapper">
 		<div id="float-wrap" class="clearfix">
@@ -60,9 +63,9 @@ echo doctype('html4-trans');
 				<div class="header">
 					<?php echo img('/images/logo.jpg', 'class="header-logo"'); ?>
 					<ul class="header-menu-list">
-						<li><div>FAQ</div></li>
-						<li><div>Business</div></li>						
-						<li class="current"><div>Individual</div></li>
+						<li class="<?php echo ($page=='faq')? 'current': ''; ?>"><div><?php echo anchor('faq', 'FAQ'); ?></div></li>
+						<li class="<?php echo ($page=='business')? 'current': ''; ?>"><div><?php echo anchor('business', 'Business'); ?></div></li>						
+						<li class="<?php echo ($page=='home')? 'current': ''; ?>"><div><?php echo anchor('/', 'Individual'); ?></div></li>
 					</ul>
 				</div>
 				

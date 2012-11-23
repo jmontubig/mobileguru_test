@@ -43,5 +43,9 @@ $route['404_override'] = '';
 $route['devices/(:any)'] = "devices/index/$1";
 $route['accessories/(:any)'] = "accessories/index/$1";
 
+//static pages
+$route['business'] = "page/index/business";
+$route['faq'] = "page/index/faq";
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

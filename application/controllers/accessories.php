@@ -69,8 +69,7 @@ class Accessories extends MY_Controller {
 		} else {
 			redirect('accessories');
 		}
-		
-		$this->session->set_userdata('current_page', 'accessories');
+				
 		$this->data['accessories_cat'] = $this->accessories_cat;
 		$this->data['cat'] = $view;
 		$this->load->view('accessories', $this->data);

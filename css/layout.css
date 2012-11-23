@@ -204,6 +204,25 @@ body:before {
 			height: 36px; 
 			border-bottom: 4px solid #fff;
 		}
+		.header .header-menu-list li a,
+		.header .header-menu-list li a:link,
+		.header .header-menu-list li a:visited,
+		.header .header-menu-list li a:hover,
+		.header .header-menu-list li a:active
+		{
+			color: #b2b3b3;
+			font-family: 'oswald', 'verdana','arial';
+			text-transform: uppercase;
+			font-size: 14px;
+			text-align: center;
+			text-decoration: none;
+		}
+		
+		.header .header-menu-list li.current a,
+		.header .header-menu-list li:hover a {
+			color: #fff;
+		}
+		
 		
 	#content .top-images { position: relative; height: 440px;}
 	.top-images .top-img { 		
