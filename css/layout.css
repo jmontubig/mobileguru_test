@@ -314,13 +314,22 @@ body:before {
 		width: 782px; 
 		position: relative; 
 		margin: 10px 0; 		
-		background: transparent
+		background: #ccc
 	}	
 		.indicator-div .indicator {
+			position: absolute;
+			background: #555; 
+			height: 3px; 
+			width: 0px;/*782px*/ 
+			z-index: 2;
+		}
+		
+		.indicator-div .red-indicator {
 			position: absolute;
 			background: #e6001d; 
 			height: 3px; 
 			width: 0px;/*782px*/ 
+			z-index: 1;
 		}
 
 	.banner-tab-list { list-style: none; padding: 0; margin: 0; height: 78px;}
@@ -584,7 +593,7 @@ body:before {
 	margin: 0;
 	padding: 20px 0;
 }
-
+	
 	.acc-thumb-list { position: relative; margin: 0; padding: 0; list-style: none; }
 		.acc-thumb-list li { 
 			width: 378px; 
@@ -598,3 +607,4 @@ body:before {
 		.acc-thumb-list li.first { margin-right: 20px;}
 	
 			.acc-thumb-list li img { width: 378px; border: 1px solid #bbb;}
+	

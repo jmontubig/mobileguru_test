@@ -61,7 +61,9 @@ echo doctype('html4-trans');
 			
 			<div class="header-content-div">
 				<div class="header">
-					<?php echo img('/images/logo.jpg', 'class="header-logo"'); ?>
+					<a href="<?php echo site_url('/'); ?>">
+						<?php echo img('/images/logo.jpg', 'class="header-logo"'); ?>
+					</a>
 					<ul class="header-menu-list">
 						<li class="<?php echo ($page=='faq')? 'current': ''; ?>"><div><?php echo anchor('faq', 'FAQ'); ?></div></li>
 						<li class="<?php echo ($page=='business')? 'current': ''; ?>"><div><?php echo anchor('business', 'Business'); ?></div></li>						

@@ -47,7 +47,8 @@
 					</div>
 					
 					<div class="indicator-div">
-						<div class="indicator"></div>
+						<div class="red-indicator"></div>
+						<div class="indicator"></div>						
 					</div>
 					
 					<ul class="banner-tab-list" >
