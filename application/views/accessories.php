@@ -15,7 +15,7 @@
 
 #container .element img { margin: 0; padding: 0;}
 #container { display: block; }
-	#container li.first { margin-right: 10px;}
+	#container .first { margin-right: 5px;}
 		
 </style>
 
@@ -35,25 +35,26 @@
 
 <div class="acc-content">
 		
-	<ul class="acc-thumb-list" id="container">
-		<?php foreach($images as $image) { ?>
+	<div id="container">
+		<?php foreach($images as $image) { $count=0; ?>
 			<?php foreach($image as $i => $img) { ?>
-				<li class="element <?php echo ($i === 'first') ? 'first' : ''?> <?php echo $img['type']; ?>" data-symbol="1" data-category="<?php echo $img['type']; ?>">
+				<div class="element <?php echo (!($count%2)) ? 'first' : ''; ?> <?php echo $img['type']; ?>" data-symbol="1" data-category="<?php echo $img['type']; ?>">
 					<a href="<?php echo $img['url']; ?>" target="_blank">
-						<img src="<?php echo site_url('/images/accessories/'.$img['img']); ?>" alt="<?php echo $img['alt']; ?>" class="acc-thumb-img" />
+						
+						<img src="<?php echo site_url('/images/accessories/'.$img['img']); ?>" alt="<?php echo $img['alt']; ?>"  />
 					</a>
-				</li>
-			<?php } ?>
+				</div>
+			<?php $count++; } ?>
 		<?php } ?>
-	</ul>
+	</div>
 	
 	
 </div>
 
 <script>
 	$(document).ready(function() {
-		$('.acc-thumb-list li').css('opacity', 0.9);
-		$('.acc-thumb-list li').hover(function() {
+		$('#container .element img').css('opacity', 0.9);
+		$('#container .element img').hover(function() {
 			$(this).animate({ opacity: 1}, 500);
 		}, function() {
 			$(this).animate({ opacity: 0.9}, 500);
@@ -61,15 +62,15 @@
 		
 		
 		//ISOTOPE
+		
 	 var $container = $('#container');
 
       $container.isotope({
-        itemSelector : '.element',
-		animationEngine: 'best-available',
-		filter: '.<?php echo $cat; ?>',
-		masonry: { columnWidth: 5 }
+        itemSelector : '.element',		
+		
+		masonry: { columnWidth: 0 }
       });
-      
+      var selected = 'current';
       
       var $optionSets = $('#options .option-set'),
           $optionLinks = $optionSets.find('a');
@@ -77,12 +78,12 @@
       $optionLinks.click(function(){
         var $this = $(this);
         // don't proceed if already selected
-        if ( $this.hasClass('selected') ) {
+        if ( $this.parents('li').hasClass(selected) ) {
           return false;
         }
         var $optionSet = $this.parents('.option-set');
-        $optionSet.find('.selected').removeClass('selected');
-        $this.addClass('selected');
+        $optionSet.find('li').removeClass(selected);
+        $this.parents('li').addClass(selected);
   
         // make option object dynamically, i.e. { filter: '.my-filter-class' }
         var options = {},
@@ -102,6 +103,16 @@
 		
         return false;
       });
+	  
+	  $('#container .element').hide();
+	  setTimeout(function() {
+		var select = $optionSets.find('.'+selected+' a');
+		$optionSets.find('li a').click();
+		select.click();
+		$('#container .element').show();
+		
+	  }, 1000);
+	  
 	  
 	  
 	});

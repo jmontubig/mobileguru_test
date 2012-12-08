@@ -604,7 +604,8 @@ body:before {
 			overflow: none; 
 		}
 		
-		.acc-thumb-list li.first { margin-right: 20px;}
+		.acc-thumb-list li.first	
+		{ margin-right: 20px;}
 	
 			.acc-thumb-list li img { width: 378px; border: 1px solid #bbb;}
-	
+		

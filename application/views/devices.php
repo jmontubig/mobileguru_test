@@ -97,12 +97,12 @@
 <div id="container" class="clearfix">
 	<?php foreach($phones as $phone) { ?>
 	
-		<div class="element transition <?php echo $phone['type']; ?>" data-symbol="1" data-category="<?php echo $phone['type']; ?>">
+		<div class="element transition <?php echo $id_brands[$phone['brand_id']]['name']; ?>" data-symbol="1" data-category="<?php echo $id_brands[$phone['brand_id']]['name']; ?>">
 			<div class="thumb-title"><?php echo $phone['name']; ?></div>
-			<img src="<?php echo site_url('/images/'.$phone['img']); ?>" alt="<?php echo $phone['name']; ?>" class="thumb-img" />
+			<img src="<?php echo site_url('/images/phones/'.ie($phone['image'], 'default-phone.png')); ?>" alt="<?php echo $phone['name']; ?>" class="thumb-img" />
 			<div class="thumb-desc">
 				<div class="desc-title"><?php echo $phone['name']; ?></div>
-				<div class="desc-content"><?php echo $phone['desc']; ?></div>
+				<div class="desc-content"><?php echo $phone['descp']; ?></div>
 				<div class="desc-price"><?php echo $phone['price']; ?></div>
 				<div class="desc-duration"><?php echo $phone['duration']; ?></div>
 			</div>

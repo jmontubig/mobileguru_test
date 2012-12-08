@@ -22,13 +22,16 @@ totalDuration = 12000;
 $(document).ready(function() {
 	
 	//sidebar height adjustments
-	cH = $('.header-content-div').height();
-	sH = $('.sidebar-div').height();
-	//console.log(cH);
-	//console.log(sH);
-	if(cH > sH) {
-		$('.sidebar-div').css('height', cH);
-	} 
+	//setDivHeights();
+	setInterval(function() {
+		var cH = $('.header-content-div').height();
+		var sH = $('.sidebar-div').height();
+		//console.log(cH);
+		//console.log(sH);
+		if(cH > sH) {
+			$('.sidebar-div').css('height', cH);
+		} 
+	}, 3000);
 	
 	//scrollables	
    $('.top-images').hover(function() {
@@ -333,11 +336,17 @@ function start_red_indicator(startWidth){
 	//}
 }
 
-$(function() {
-	$('.top-images .top-img').hide().first().show().addClass('active');
-	$('.banner-tab-list li').first().addClass('active');
-    setInterval( "slideSwitch()", 3000 );
-});
+
+
+function setDivHeights(){
+	var cH = $('.header-content-div').height();
+	var sH = $('.sidebar-div').height();
+	//console.log(cH);
+	//console.log(sH);
+	if(cH > sH) {
+		$('.sidebar-div').css('height', cH);
+	} 
+}
 
 
 /**
@@ -367,3 +376,5 @@ function insert_first_letters() {
 		elements[i].innerHTML = elements[i].innerHTML.replace(/\b([a-z])([a-z]+)?\b/gim, "<span class='first-letter'>$1</span>$2")
 	}
 }
+
+

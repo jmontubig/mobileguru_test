@@ -1,0 +1,117 @@
+/* LAYOUT */
+/** *  GENERAL LAYOUT STYLES  * */
+html { 
+	height: 100%; 
+	
+}
+
+body {
+background:#fff;
+position: relative;
+height: 100%;
+width: 100%;
+
+}
+
+/*Opera Fix*/
+body:before {
+    content:"";
+    height:100%;
+    float:left;
+    width:0;
+    margin-top:-32767px;
+}
+
+table td { vertical-align: middle; }
+
+#wrapper {
+	position: relative; 
+	width: 1028px; 
+	margin: 0 auto; 
+	padding: 0;
+	display: block; 
+	height: auto; 
+}
+	.admin-header {
+		background: #e6001d;
+		padding: 20px; 
+		font-size: 20px; 
+		color: #fff;
+		margin-bottom: 10px;
+	}
+	
+	.admin-header .admin-content {
+		position: relative; 
+		width: 1028px; 
+		margin: 0 auto; 
+		padding: 0;
+		display: block; 
+		height: auto; 
+	}
+		.admin-header a,
+		.admin-header a:link,
+		.admin-header a:visited 
+		{
+			color: #fff;
+			font-family: 'rbno2', 'tahoma';
+			font-size: 20px;
+			text-decoration: none; 
+			text-transform: uppercase;
+			padding: 5px;
+		}
+				
+		.admin-header a:hover,
+		.admin-header a:active,
+		.admin-header a:focus
+		{
+			background: #525252;
+			text-decoration: none;
+			outline: none;
+		}
+		
+
+.admin-title { 
+	padding: 10px 0; 
+	border-bottom: 1px solid #525252; 
+	margin-bottom: 10px;
+	font-size: 16px;
+	font-family: 'oswald', 'Tahoma';
+	text-transform: uppercase;
+}
+
+.admin-content {
+	padding: 20px; 
+}
+
+.login-div { width: 500px; margin: 0 auto;}
+
+/** CONTENT CSS **/
+.list-div { position: relative; width: 100%; height: auto; 	}
+.banner-div { position: relative; border: 1px solid #888; padding: 20px; margin: 0 0 10px 0;}
+
+.phone-list-table { position: relative; }
+.phone-list-table td { padding: 10px 5px; border-bottom: 1px solid #ccc; vertical-align: top;}
+.phone-list-table td.thead { font-weight: bold; border-bottom: 2px solid #555;}
+.button,
+a.button,
+a.button:link,
+a.button:visited
+ { 
+	background: #e6001d;
+	font-family: 'rbno2', 'tahoma', 'arial';
+	padding: 2px 7px;
+	text-decoration: none;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 18px;
+}
+
+.button:hover,
+a.button:hover,
+a.button:focus,
+a.button:active 
+{
+	background: #FF161D;
+}
+
+.admin-title a.small { font-size: 10px; color: #e6001d;  }

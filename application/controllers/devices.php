@@ -33,7 +33,7 @@ class Devices extends MY_Controller {
 			$this->session->set_flashdata('error', 'Brand is not valid or does not exists.'); 
 			redirect('devices');
 		}
-		
+		/*
 		$this->data['phones'] = array(
 		
 			0 => array(
@@ -262,10 +262,31 @@ class Devices extends MY_Controller {
 				'desc' => 'Whether it\'s handling many tasks at once, playing your favorite games smoothly, loading apps in a flash or quickly capturing photos and HD video, the Samsung Galaxy S III has the strength to make every action seem effortless.'
 			)
 			
-		);
+		);*/
 		
+		foreach($this->Phones->types as $id => $type) {
+			if($type['name'] == $cat) { $cat_id = $id; break;}
+		}
 		
+		foreach($this->Phones->brands as $id => $pbrand) {
+			//pr($brand['name']);
+			if($pbrand['name'] == $brand) { $brand_id = $id; break;}
+		}
+		//pr($brand_id);
+		//pr($cat_id);
 		
+		$this->data['id_brands'] = $this->Phones->brands;
+		$this->data['id_types'] = $this->Phones->types;
+		
+		$this->data['phones'] = $this->db->select('*')
+			->where(array('type_id' => $cat_id) )
+			->from('phones')->get()->result_array();
+			
+		//pr($this->data['phones']);
+		if(issetNotEmpty($this->data['phones'][0])) {
+			$brand = $this->data['id_brands'][$this->data['phones'][0]['brand_id']]['name'];
+		}
+		//pr($brand);
 		//set data to view
 		$this->data['cat'] = $cat;
 		$this->data['brand'] = $brand;

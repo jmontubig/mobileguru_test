@@ -22,13 +22,15 @@ class Jm {
 	//if web app is run via testserver or localhost
 	var $offline_string = array('localhost', 'testserver');
 	//offline real path used for deleting files etc.
-	var $offline_real_path = '/xampp/htdocs/mobileguru';
+	var $offline_real_path = '/xampp/htdocs/mobileguru_test';
 	
 	//online string that will be searched on the url to determine 
 	//if web app is online or not
 	var $online_string = array('.com');
 	//online real path used for deleting files etc.
 	var $online_real_path = '';
+	var $banner_upload_path = 'images/banners/';
+	var $phones_upload_path = 'images/phones/';
 	
     
     function __construct() {
@@ -116,7 +118,7 @@ class Jm {
    function is_user_admin(){
        if($this->CI->session->userdata('users') ) {
            $user = $this->CI->session->userdata('users');      
-           return $user['is_admin'];//return user array           
+           return 1;//return user array           
        } else {
            return null;
        }
@@ -1103,6 +1105,50 @@ class Jm {
 		 }
 		
 		 return $out;
+	}
+	
+	/**
+	 * Function to check header size if valid
+	 * Will only check $_FILES['headerfile'] index
+	 *  [headerfile] => Array
+        (
+            [name] => product-pic.jpg
+            [type] => image/jpeg
+            [tmp_name] => C:\xampp\tmp\phpD98E.tmp
+            [error] => 0
+            [size] => 12037
+        )
+	 */
+	function check_header_size($index = 'userfile', $label='File'){
+		$config=array(
+			'upload_path' => './uploads/',
+			'allowed_types' => 'gif|jpg|png',
+			'max_size'	=> '2000',
+			'max_width'  => '1004',
+			'max_height'  => '480'
+		);
+			
+		if( isset($_FILES[$index]) && !empty($_FILES[$index]['name']) ) {
+			list($width, $height, $type, $attr) = getimagesize($_FILES['headerfile']['tmp_name']);
+			if($width < $config['max_width']) {
+				$this->validation_errors .= '<div> '.$label.' width should be greater than '. $config['max_width'] . 'px </div>'; 
+				return false;
+			}
+			if($height < $config['max_height']) {
+				$this->validation_errors .= '<div> '.$label.' height should be greater than '. $config['max_height']. 'px </div>'; 
+				return false;
+			}
+			if($_FILES[$index]['size'] > $config['max_size']) {
+				$this->validation_errors .= '<div> Maximum file size for '.$label.' should not exceed to '. $config['max_size'] / 1000 . 'KB </div>'; 
+				return false;			
+			}
+			
+			return true;
+		} else {
+			return true;
+		}
+		
+		
 	}
 	
 }

@@ -5,7 +5,9 @@ class Homepage extends MY_Controller {
 	
 	public function index()
 	{
-		$this->load->view('homepage');
+		
+		$this->data['banners'] = $this->Homepages->get_all(null, false);	
+		$this->load->view('homepage', $this->data);
 	}
 }
 

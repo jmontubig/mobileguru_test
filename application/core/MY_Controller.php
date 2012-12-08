@@ -61,7 +61,7 @@ class MY_Controller extends CI_Controller {
 		$this->load->view('header');
 		return;  
 	}
-    protected function message() { if($this->jm->is_user_admin()) { $this->load->view('message');return; } }
+    protected function message() { return;  }
     protected function after() { 
 		$this->load->view('footer');
 		return; 
@@ -177,13 +177,14 @@ class MY_Controller extends CI_Controller {
 
 
 class MY_Admin extends MY_Controller {
-    
+    var $restricted_pages = array('login' => 'Login');
+	
     protected function before() 
     { 
 		
-		if((!$this->jm->get_logged_user()) || (!$this->jm->is_user_admin())){
+		if( (!$this->jm->get_logged_user()) &&  (!array_key_exists($this->uri->rsegment(2), $this->restricted_pages)) ){
 			$this->session->set_flashdata('error', 'You are not authorized to access this section.');
-			redirect('login'); 
+			redirect('admin/login'); 
 		}
 		
         $this->load->view('admin_header');

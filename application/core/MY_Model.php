@@ -69,6 +69,12 @@ class MY_Model extends CI_Model
 	var $display_field = 'name';
 	var $display_fields = array();
 	
+	/** FOR VALIDATION VARIABLES **/
+	var $required_fields = array();
+	var $field_rules = array();
+	var $field_callbacks = '';
+	var $rule_messages = array();
+	
 
 	function __construct(){
 		parent::__construct();
@@ -959,5 +965,152 @@ class MY_Model extends CI_Model
 		if($single && $multi) return false;
 		else return true;
 	}
+	
+	
+	/** 
+	 * ===========================================
+	 * 
+	 * FORM VALIDATION
+	 * 
+	 * ===========================================
+	 */
+	
+	
+	/**
+     * Function to set the required fields for Document object
+     * @param type $fields 
+     */
+    function set_required_fields($fields = array()) {
+        if(empty($fields)){
+			/*
+            $this->required_fields = array(
+                'name' => 'Document Name', 
+                'sender_org' => 'Sender / Organization',
+                'doc_type_id' => 'Document Type',
+                'particulars' => 'Particulars',                    
+                'document_ref_number' => 'Document Reference Number'
+            );
+			*/
+        }
+    }
+    
+    /**
+     * Function to set main field rules for form validation.
+     * @param array $rules 
+     */
+    function set_field_rules($rules=null){
+        if(empty($rules)){   
+			/*		
+             $this->field_rules['name'] = array('required','max_length[100]', 'min_length[5]');
+             $this->field_rules['sender_org'] = array('required');
+             $this->field_rules['doc_type_id'] = array('required');
+             $this->field_rules['particulars'] = array('required');
+             $this->field_rules['document_ref_number'] = array('required', 'is_unique[document_ref_number]');
+			 */
+        } else {
+            $this->field_rules = $rules;
+        }
+    }
+    
+    /**
+     * Function to set up rule messages used for form validation
+     * @param array $messages 
+     */
+    function set_rule_message($messages=null){
+        if(empty($messages)){ 
+/*		
+             $this->rule_messages['name'] = array(
+                    'required' => $this->display_fields['name'] . ' is required.',
+                    'max_length[100]' => 'The maximum character is 100 characters only.',
+                    'min_length[5]' => 'The minimum character is 5 characters only.'
+                );
+             $this->rule_messages['sender_org'] = array(
+                    'required' => $this->display_fields['sender_org'] .' is required.'
+             );
+             $this->rule_messages['doc_type_id'] = array(
+                    'required' => $this->display_fields['doc_type_id'] .' is required.'
+             );
+             $this->rule_messages['particulars'] = array(
+                    'required' => $this->display_fields['particulars'] .' is required.'
+             );
+             $this->rule_messages['document_ref_number'] = array(
+                    'required' => $this->display_fields['document_ref_number'] .' is required.',
+                    'is_unique[document_ref_number]' => $this->display_fields['document_ref_number'] .' should be unique.'
+                 
+             );
+			 */
+        } else {
+            $this->rule_messages = $messages;
+        }
+    }
+    
+    /**
+     * Prototype Function for adding callbacks to model's form validation array. try this when needed.
+     * But, in any case, if you dont want to mess up your controller for callback functions, just extend form_validation class
+     * and declare your functions there, and call them like a normal function in setting rules. 
+     * @param Array $callbacks 
+     */
+    function set_field_callback($callbacks=null){
+          if(empty($callbacks)){                  
+             //$this->field_callbacks['name'] = 'test_callback';
+             //$this->field_callbacks['document_ref_number'] = 'is_unique[document_ref_number]';
+          } else {
+            $this->field_callbacks = $callbacks;
+        }
+     }
+	 
+	 
+	 /**
+      * Function to set up form validation rules used for an existing instance of $form_validation 
+      * which is reference to a form_validation class declared somewhere in controller
+	  * In order for this to work, setup the ff variables:
+	  * 	$field_rules 
+	  * 
+      * @param Object $form_validation
+      * @param Array $ignore_lists 
+      */
+    function set_form_validation(&$form_validation, $ignore_lists = array() ){
+        //$this->set_field_callback();
+        foreach($this->required_fields as $field => $field_label){            
+            $form_rules ='';
+            $form_callbacks = '';
+             $ra_count = 0;
+            
+            /** SETUP FORM RULES HERE **/
+            foreach($this->field_rules[$field] as $rule){
+                $form_rules .= $rule;
+                //pr(count($rule_array));
+                //pr('cnt=' . $ra_count);
+                if($ra_count < count($this->field_rules[$field])-1){  $form_rules .= '|'; }
+                $ra_count++;                    
+            }
+            
+            /** SETUP CALLBACKS HERE **/
+            if(isset($this->field_callbacks[$field])){
+                 $form_rules .= '|' . $this->field_callbacks[$field];
+            }
+            
+            if(!in_array($field, $ignore_lists)){
+                /** SET FORM VALIDATION RULES HERE **/                        
+                $form_validation->set_rules($field, $field_label, $form_rules);
+                //pr( 'RULES : ' . $field . ' => ' .$form_rules);
+            }
+            
+           
+            
+            
+            /** SETUP FORM ERROR MESSAGES HERE  
+            foreach($this->rule_messages[$field] as $rule => $msg){
+                $form_validation->set_message($rule, $msg);
+                //pr( 'MESSAGE : ' . $field .' : '. $rule .' => ' .$msg);             
+            }
+            **/
+            
+            //echo '=============================';
+        }
+        
+        //prd($this->form_validation->_field_data);
+        //die();
+    }
 
 }
