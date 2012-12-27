@@ -7,7 +7,7 @@ class Devices extends MY_Controller {
 		'tablets' => 'Tablets',
 		'hotspots' => 'Hotspots',
 		'basic-phones' => 'Basic Phones',
-		'home-phone' => 'Home Phone'
+		'home-phones' => 'Home Phone'
 	);
 	
 	var $brands = array(
@@ -282,12 +282,23 @@ class Devices extends MY_Controller {
 			->where(array('type_id' => $cat_id) )
 			->from('phones')->get()->result_array();
 			
-		//pr($this->data['phones']);
-		if(issetNotEmpty($this->data['phones'][0])) {
+		$phones = $this->data['phones'];
+		
+		if(issetNotEmpty($phones[0]) && !$this->uri->rsegment(4)) {
 			$brand = $this->data['id_brands'][$this->data['phones'][0]['brand_id']]['name'];
+			$brands = array();
+			//setup $brands
+			foreach($this->data['phones'] as $phone){
+				$brand_name =$this->data['id_brands'][$phone['brand_id']]['name'];
+				
+				if(!in_array($brand_name, $brands)){
+					$brands[] = $this->data['id_brands'][$phone['brand_id']]['name'];
+				}
+			}
 		}
-		//pr($brand);
+		//pr($brands);
 		//set data to view
+		//pr($this->data['phones']);
 		$this->data['cat'] = $cat;
 		$this->data['brand'] = $brand;
 		$this->data['categories'] = $this->categories;

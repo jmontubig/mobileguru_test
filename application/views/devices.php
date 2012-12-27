@@ -80,6 +80,7 @@
 </ul>
 
 <!-- BRAND LISTS -->
+<?php if(!empty($phones)) { ?>
 <section id="options" class="clearfix">
 	<ul id="filters" class="phone-brand-list option-set" data-option-key="filter">
 		<?php foreach($brands as $brand_id => $brand_obj) { 
@@ -93,21 +94,29 @@
 		<?php } ?>
 	</ul>
 </section> <!-- #options -->
-
+<?php } else { ?>
+<br/><br/>
+<?php } ?>
 <div id="container" class="clearfix">
-	<?php foreach($phones as $phone) { ?>
-	
-		<div class="element transition <?php echo $id_brands[$phone['brand_id']]['name']; ?>" data-symbol="1" data-category="<?php echo $id_brands[$phone['brand_id']]['name']; ?>">
-			<div class="thumb-title"><?php echo $phone['name']; ?></div>
-			<img src="<?php echo site_url('/images/phones/'.ie($phone['image'], 'default-phone.png')); ?>" alt="<?php echo $phone['name']; ?>" class="thumb-img" />
-			<div class="thumb-desc">
-				<div class="desc-title"><?php echo $phone['name']; ?></div>
-				<div class="desc-content"><?php echo $phone['descp']; ?></div>
-				<div class="desc-price"><?php echo $phone['price']; ?></div>
-				<div class="desc-duration"><?php echo $phone['duration']; ?></div>
-			</div>
-		</div>	
+	<?php if(!empty($phones)) { ?>
+		<?php foreach($phones as $phone) { ?>
 		
+			<div class="element transition <?php echo $id_brands[$phone['brand_id']]['name']; ?>" data-symbol="1" data-category="<?php echo $id_brands[$phone['brand_id']]['name']; ?>">
+				<div class="thumb-title"><?php echo $phone['name']; ?></div>
+				<img src="<?php echo site_url('/images/phones/'.ie($phone['image'], 'default-phone.png')); ?>" alt="<?php echo ie($phone['name'], ''); ?>" class="thumb-img" />
+				<div class="thumb-desc">
+					<div class="desc-title"><?php echo ie($phone['name'],''); ?></div>
+					<div class="desc-content"><?php echo ie($phone['descp'], ''); ?></div>
+					<div class="desc-price"><?php echo ie($phone['price'],''); ?></div>
+					<div class="desc-duration"><?php echo ie($phone['duration'], ''); ?></div>
+				</div>
+			</div>	
+			
+		<?php } ?>	
+	<?php } else { ?>
+		<div class="error">
+			No Phones Available in this category.
+		</div>
 	<?php } ?>
 	
 </div>
@@ -120,9 +129,9 @@
 			$(this).find('.thumb-desc').fadeOut(100);
 		});
 		
-		
-		//ISOTOPE
-		 var $container = $('#container');
+	<?php if(!empty($phones)) { ?>	
+	//ISOTOPE
+	 var $container = $('#container');
 
       $container.isotope({
         itemSelector : '.element',
@@ -163,7 +172,13 @@
 		
         return false;
       });
-	  
+	  <?php } else { ?>
+		 /*$('#options .option-set a').click(function() {
+			 $('#options').find('.selected').removeClass('selected');
+			$(this).addClass('selected');
+			return false;
+		 });*/
+	  <?php } ?>
 	  //$container.isotope({ filter: '.<?php echo $brand; ?>' });
 	  //$('.<?php echo $brand; ?>').click();
 	  

@@ -2,6 +2,35 @@
 						<div class="phones">
 						
 							<div class="items">
+							
+								<?php
+									$counter=1;
+									$startDiv =0;
+									
+									foreach($phones as $phone){
+										$isWrap = ($counter == 1) || $startDiv;
+										//pr($isWrap);
+										if($isWrap){ echo '<div>'; $startDiv =0; }
+											$type = $id_types[$phone["type_id"]]["name"];
+											$brand = $id_brands[$phone["brand_id"]]["name"];
+											echo '
+												<div >
+													<div class="title">'.$phone['name'].'</div>
+													<div class="image">
+														<a href="'.site_url('devices/'.$type.'/'.$brand).'" title="'.$phone['name'].'">
+														' . img(array('src' => 'images/phones/'.ie($phone['image'], 'default-phone.png'), 'height' => 108,  'class' => 'phone-thumb') ) 
+													.'</a></div>
+												</div>
+											';
+										
+										if(($counter%6) == 0){ echo '</div>'; $startDiv =1; }
+										$counter++;
+									}
+									
+									echo '</div>';
+								?>
+							
+								<?php /*
 								<!-- FIRST INSTANCE -->
 								<div>
 									<div >
@@ -40,6 +69,9 @@
 									</div>	
 
 								</div>
+								*/ 
+							?>
+								
 								
 								
 								

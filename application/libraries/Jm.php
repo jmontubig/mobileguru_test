@@ -40,6 +40,8 @@ class Jm {
         $this->CI->load->helper('url');
         $this->CI->load->helper('Form');
         $this->CI->load->library('session');
+		
+		//$this->online_real_path = $_SERVER['PHP_DOCUMENT_ROOT'];
         
 		if($this->get_logged_user()) { $this->user_logged = $this->get_logged_user(false); }
 		

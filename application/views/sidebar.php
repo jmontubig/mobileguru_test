@@ -20,22 +20,24 @@
 			<div class="oswald cap title">Phone</div>
 			<div class="ptsans">(212) 346-9662</div>
 		</div>
-		<?php /*
+		<?php /* 
 		
 		
 		<iframe width="177" height="127" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=+&amp;q=275+Greenwich+St++New+York,+NY+10007&amp;ie=UTF8&amp;hq=&amp;hnear=275+Greenwich+St,+New+York,+10007&amp;t=m&amp;ll=40.717079,-74.010258&amp;spn=0.008262,0.015278&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br />
-		*/ ?>
+	*/ ?>
 	<a href="https://maps.google.com/maps?q=275+Greenwich+St,+New+York,+NY+10007,+United+States&hl=en&sll=37.09024,-95.712891&sspn=34.808514,86.572266&oq=275+Greenwich+St++New+York,+NY+10007&hnear=275+Greenwich+St,+New+York,+10007&t=m&z=16" target="blank">
 			<?php echo img('/images/sidebar-map.jpg'); ?>
 		</a>
+		
 	
-		<?php /*
+	
+		<?php /* 
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 		 <script>
 		  //function initialize() {
 			$(document).ready(function() { 
 			var mapOptions = {
-			  zoom: 6,
+			  zoom: 1,
 			  center: new google.maps.LatLng(40.717079, -74.010258),
 			  disableDefaultUI: true,
 			  mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -50,6 +52,7 @@
 		</script>
 		<div id="map_canvas" style="width: 177px ;height: 127px; "></div>
 		*/ ?>
+	
 		<br/>
 		<ul class="sidebar-main-menu-list">
 			<!-- DEVICES -->
